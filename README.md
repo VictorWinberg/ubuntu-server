@@ -66,7 +66,7 @@ $ mkdir www/{PROJECT}
 #### Add post-receive hook
 *Requires: npm install forever --global && apt-get install jq*
 
-`$ cd repos/{PROJECT} && vim hooks/post-receive`
+`$ cd repos/{PROJECT}.git && vim hooks/post-receive`
 
 ```bash
 #!/bin/bash 
