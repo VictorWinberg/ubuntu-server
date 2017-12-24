@@ -70,8 +70,8 @@ $ mkdir www/{PROJECT}
 #!/bin/bash 
 set -eu # exit script on errors
 
-WORK_TREE="/home/git/www/drinkit"
-GIT_DIR="/home/git/repos/drinkit.git"
+WORK_TREE="/home/git/www/{PROJECT}"
+GIT_DIR="/home/git/repos/{PROJECT}.git"
 BRANCH="master"
 
 while read oldrev newrev ref
