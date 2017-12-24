@@ -5,8 +5,8 @@ Ubuntu Server
 2. [Setup a new project](#setup-a-new-project)
     1. [Nginx setup](#nginx-setup)
     2. [DNS setup](#dns-setup)
-    3. [Git setup](#git-setup)
-    4. [Git hooks](#git-hooks)
+    3. [Git server setup](#git-server-setup)
+    4. [Git client setup](#git-client-setup)
 
 SSH to server
 ---------------
@@ -25,7 +25,7 @@ server {
   server_name {PROJECT}.domain;
   
   location / {
-    # Use the PORT that the PROJECT will run over
+    # Use the PORT that the PROJECT will run on
     proxy_pass http://localhost:{PORT};
   }
 }
@@ -47,12 +47,12 @@ server {
 |           | A    | 300 | {SERVER_IP} |
 | *         | A    | 300 | {SERVER_IP} |
 
-### Git setup
+### Git server setup
 #### Setup bare repo
 ```sh
-$ mkdir repos/{PROJECT}.git www/{PROJECT}
-$ cd repos/{PROJECT}.git
-$ git init --bare
+$ su git && cd ~
+$ git init --bare repos/{PROJECT}.git
+$ mkdir www/{PROJECT}
 ```
 
 #### Add ssh keys
@@ -63,12 +63,8 @@ $ git init --bare
 # ssh-rsa ...
 ```
 
-#### Clone repo
-`$ git clone git@domain:/home/git/repos/{PROJECT}.git`
-
-### Git hooks
 #### Add post-receive hook
-`$ vim hooks/post-receive`
+`$ cd repos/{PROJECT} && vim hooks/post-receive`
 
 ```bash
 #!/bin/bash 
@@ -106,3 +102,7 @@ done
 ```
 
 `$ chmod +x hooks/post-receive`
+
+### Git client setup
+#### Clone repo
+`$ git clone git@domain:/home/git/repos/{PROJECT}.git`
