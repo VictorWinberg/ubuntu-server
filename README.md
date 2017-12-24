@@ -91,7 +91,9 @@ do
 
     echo "> forever restart main..."
     MAIN=$(cat package.json | jq -r ".main")
+    forever columns set uid script forever pid uptime > /dev/null
     forever restart $MAIN || (forever start $MAIN && forever list)
+    forever columns reset > /dev/null
     echo "Deployment ${BRANCH} branch complete."
 
   else
