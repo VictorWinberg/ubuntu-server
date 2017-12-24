@@ -106,3 +106,10 @@ done
 ### Git client setup
 #### Clone repo
 `$ git clone git@domain:/home/git/repos/{PROJECT}.git`
+
+#### Init repo
+```sh
+# Fetch or create a .gitignore
+$ curl -o .gitignore https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore
+$ npm init
+$ npm install express --save
