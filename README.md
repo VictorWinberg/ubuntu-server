@@ -70,8 +70,8 @@ $ mkdir www/{PROJECT}
 #!/bin/bash 
 set -eu # exit script on errors
 
-WORK_TREE="/home/git/www/{PROJECT}"
-GIT_DIR="/home/git/repos/{PROJECT}.git"
+WORK_TREE="/home/git/www/drinkit"
+GIT_DIR="/home/git/repos/drinkit.git"
 BRANCH="master"
 
 while read oldrev newrev ref
@@ -82,16 +82,16 @@ do
   then
     echo "Deploying ${BRANCH} branch..."
 
-    echo "--> Checking out..."
+    echo "> git checkout..."
     git --work-tree="$WORK_TREE" --git-dir="$GIT_DIR" checkout -f
 
-    echo "--> NPM install..."
+    echo "> npm install..."
     cd "$WORK_TREE"
     npm install
 
-    echo "--> NPM restart..."
-    npm restart
-
+    echo "> forever restart main..."
+    MAIN=$(cat package.json | jq -r ".main")
+    forever restart $MAIN || (forever start $MAIN && forever list)
     echo "Deployment ${BRANCH} branch complete."
 
   else
@@ -109,7 +109,12 @@ done
 
 #### Init repo
 ```sh
+$ cd {PROJECT}
 # Fetch or create a .gitignore
 $ curl -o .gitignore https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore
 $ npm init
 $ npm install express --save
+$ git add .
+$ git commit -m "initialize commit"
+$ git push
+```
