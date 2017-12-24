@@ -4,7 +4,9 @@ Ubuntu Server
 1. [SSH to server](#ssh-to-server)
 2. [Setup a new project](#setup-a-new-project)
     1. [Nginx setup](#nginx-setup)
-    2. [Git setup](#git-setup)
+    2. [DNS setup](#dns-setup)
+    3. [Git setup](#git-setup)
+    4. [Git hooks](#git-hooks)
 
 SSH to server
 ---------------
@@ -63,6 +65,7 @@ $ git init --bare
 #### Clone repo
 `$ git clone git@domain:/home/git/repos/{PROJECT}.git`
 
+### Git hooks
 #### Add post-receive hook
 `$ vim hooks/post-receive`
 
