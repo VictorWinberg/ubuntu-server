@@ -18,13 +18,14 @@ Setup a new project
 ### Nginx setup
 `$ sudo vim /etc/nginx/sites-available/default`
 
-```
+```nginx
 # ...
 server {
   listen 3000;
   server_name {PROJECT}.domain;
   
   location / {
+    # Use the PORT that the PROJECT will run over
     proxy_pass http://localhost:{PORT};
   }
 }
@@ -48,7 +49,7 @@ server {
 
 ### Git setup
 #### Setup bare repo
-```
+```sh
 $ mkdir repos/{PROJECT}.git www/{PROJECT}
 $ cd repos/{PROJECT}.git
 $ git init --bare
@@ -69,7 +70,7 @@ $ git init --bare
 #### Add post-receive hook
 `$ vim hooks/post-receive`
 
-```
+```bash
 #!/bin/bash 
 set -eu # exit script on errors
 
