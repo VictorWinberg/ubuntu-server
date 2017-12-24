@@ -64,6 +64,8 @@ $ mkdir www/{PROJECT}
 ```
 
 #### Add post-receive hook
+*Requires: npm install forever --global && apt-get install jq*
+
 `$ cd repos/{PROJECT} && vim hooks/post-receive`
 
 ```bash
@@ -116,7 +118,22 @@ $ cd {PROJECT}
 $ curl -o .gitignore https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore
 $ npm init
 $ npm install express --save
+# MAIN from npm init or package.json (default: index.js)
+$ atom {MAIN}.js
+```
+```js
+# {MAIN}.js
+const express = require('express')
+const app = express()
+
+app.get('/', (req, res) => res.send('Hello World!'))
+
+app.listen({PORT}, () => console.log('Example app listening on port {PORT}!'))
+```
+```sh
 $ git add .
 $ git commit -m "initialize commit"
 $ git push
 ```
+
+**Done!**
