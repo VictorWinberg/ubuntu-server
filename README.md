@@ -56,17 +56,17 @@ $ mkdir www/{PROJECT}
 ```
 
 #### Add ssh keys
-`$ vim /home/git/.ssh/authorized_keys`
+`$ cat >> /home/git/.ssh/authorized_keys`
 
 ```
-# ssh-rsa ABC123 user@domain.com
-# ssh-rsa ...
+ssh-rsa ABC123 user@domain.com
 ```
+`[ENTER] + Ctrl+D`
 
 #### Add post-receive hook
 *Requires: npm install forever --global && apt-get install jq*
 
-`$ cd repos/{PROJECT}.git && vim hooks/post-receive`
+`$ cd repos/{PROJECT}.git && cat > hooks/post-receive`
 
 ```bash
 #!/bin/bash 
@@ -104,6 +104,7 @@ do
   fi
 done
 ```
+`[ENTER] + Ctrl+D`
 
 `$ chmod +x hooks/post-receive`
 
