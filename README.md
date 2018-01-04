@@ -91,18 +91,18 @@ server {
 `$ sudo /etc/init.d/nginx reload (start/restart)`
 
 ### DNS setup
-| Host      | Type | TTL | Target      |
-| --------- | ---- | --- | ----------- |
-|           | A    | 300 | {SERVER_IP} |
-| www       | A    | 300 | {SERVER_IP} |
-| {PROJECT} | A    | 300 | {SERVER_IP} |
+| Host      | Type | TTL   | Target      |
+| --------- | ---- | ----- | ----------- |
+|           | A    | 86400 | {SERVER_IP} |
+| www       | A    | 86400 | {SERVER_IP} |
+| {PROJECT} | A    | 86400 | {SERVER_IP} |
 | ...
 
 ##### Alt with wildcard domain name support
-| Host      | Type | TTL | Target      |
-| --------- | ---- | --- | ----------- |
-|           | A    | 300 | {SERVER_IP} |
-| *         | A    | 300 | {SERVER_IP} |
+| Host      | Type | TTL   | Target      |
+| --------- | ---- | ----- | ----------- |
+|           | A    | 86400 | {SERVER_IP} |
+| *         | A    | 86400 | {SERVER_IP} |
 
 ### Git server setup
 #### Setup bare repo
