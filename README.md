@@ -8,6 +8,7 @@ Ubuntu Server
     2. [DNS setup](#dns-setup)
     3. [Git server setup](#git-server-setup)
     4. [Git client setup](#git-client-setup)
+4. [Run on Startup](#run-on-startup)
 
 Setup wireless network
 ----------------------
@@ -195,3 +196,12 @@ $ git push
 ```
 
 **Done!**
+
+Run on Startup
+--------------
+`$ sudo crontab -e`
+
+```
+# Edit this file to introduce tasks to be run by cron.
+@reboot /bin/sh /home/git/reset.sh
+```
