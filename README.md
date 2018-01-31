@@ -170,6 +170,9 @@ done
 #### Clone repo
 `$ git clone git@domain:/home/git/repos/{PROJECT}.git`
 
+#### Add remote
+`$ git remote add server git@domain:/home/git/repos/{PROJECT}.git`
+
 #### Init repo
 ```sh
 $ cd {PROJECT}
