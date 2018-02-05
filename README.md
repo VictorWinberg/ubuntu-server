@@ -184,7 +184,7 @@ $ npm install express --save
 $ atom {MAIN}.js
 ```
 ```js
-# {MAIN}.js
+// {MAIN}.js
 const express = require('express')
 const app = express()
 
