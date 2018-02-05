@@ -168,10 +168,10 @@ done
 
 ### Git client setup
 #### Clone repo
-`$ git clone git@domain:/home/git/repos/{PROJECT}.git`
+`$ git clone git@domain:repos/{PROJECT}.git`
 
 #### Add remote
-`$ git remote add server git@domain:/home/git/repos/{PROJECT}.git`
+`$ git remote add server git@domain:repos/{PROJECT}.git`
 
 #### Init repo
 ```sh
