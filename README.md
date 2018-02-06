@@ -216,4 +216,5 @@ Update Certificates
 $ sudo certbot --authenticator webroot --installer nginx
 Input webroot: /usr/share/nginx/html
 $ sudo vim /etc/nginx/sites-available/default
+$ sudo /etc/init.d/nginx reload (start/restart)
 ```
