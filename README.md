@@ -9,6 +9,7 @@ Ubuntu Server
     3. [Git server setup](#git-server-setup)
     4. [Git client setup](#git-client-setup)
 4. [Run on Startup](#run-on-startup)
+5. [Update Certificates](#update-certificates)
 
 Setup wireless network
 ----------------------
@@ -207,4 +208,12 @@ Run on Startup
 ```
 # Edit this file to introduce tasks to be run by cron.
 @reboot /bin/sh /home/git/reset.sh
+```
+
+Update Certificates
+-------------------
+```
+$ sudo certbot --authenticator webroot --installer nginx
+Input webroot: /usr/share/nginx/html
+$ sudo vim /etc/nginx/sites-available/default
 ```
