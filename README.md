@@ -167,6 +167,13 @@ done
 
 `$ chmod +x hooks/post-receive`
 
+#### Run post-receive command on all repos (reset)
+```bash
+for repo in $(find /home/git/repos -name *.git); do
+  echo "oldrev newrev refs/heads/master" | "$repo/hooks/post-receive"
+done
+```
+
 ### Git client setup
 #### Clone repo
 `$ git clone git@domain:repos/{PROJECT}.git`
@@ -207,7 +214,8 @@ Run on Startup
 
 ```
 # Edit this file to introduce tasks to be run by cron.
-@reboot /bin/sh /home/git/reset.sh
+@reboot /bin/sh /home/git/reset.sh # Run as root
+@reboot /bin/su -c '/home/git/reset.sh' -s /bin/sh - git # Run as user "git"
 ```
 
 Update Certificates
