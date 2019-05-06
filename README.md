@@ -153,10 +153,9 @@ do
     echo "> npm run build..."
     npm run build
 
-    echo "> forever restart main..."
-    MAIN=$(cat package.json | jq -r ".main")
+    echo "> forever restart server..."
     forever columns set uid script forever pid uptime > /dev/null
-    forever restart $MAIN || (forever start $MAIN && forever list)
+    forever restart server || (forever start server && forever list)
     forever columns reset > /dev/null
     echo "Deployment ${BRANCH} branch complete."
 
