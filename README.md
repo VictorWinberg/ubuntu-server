@@ -145,10 +145,13 @@ do
 
     echo "> git checkout..."
     git --work-tree="$WORK_TREE" --git-dir="$GIT_DIR" checkout -f
+    cd "$WORK_TREE"
 
     echo "> npm install..."
-    cd "$WORK_TREE"
     npm install
+
+    echo "> npm run build..."
+    npm run build
 
     echo "> forever restart main..."
     MAIN=$(cat package.json | jq -r ".main")
