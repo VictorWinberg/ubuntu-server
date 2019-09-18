@@ -10,6 +10,7 @@ Ubuntu Server
     4. [Git client setup](#git-client-setup)
 4. [Run on Startup](#run-on-startup)
 5. [Update Certificates](#update-certificates)
+6. [External IP](#external-ip)
 
 Setup wireless network
 ----------------------
@@ -227,4 +228,10 @@ $ sudo certbot --authenticator webroot --installer nginx
 Input webroot: /usr/share/nginx/html
 $ sudo vim /etc/nginx/sites-available/default
 $ sudo /etc/init.d/nginx reload (start/restart)
+```
+
+External IP
+----------
+```
+$ curl https://ipinfo.io/ip
 ```
