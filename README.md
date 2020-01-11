@@ -11,6 +11,7 @@ Ubuntu Server
 4. [Run on Startup](#run-on-startup)
 5. [Update Certificates](#update-certificates)
 6. [External IP](#external-ip)
+7. [Nextcloud](#nextcloud)
 
 Setup wireless network
 ----------------------
@@ -234,4 +235,15 @@ External IP
 ----------
 ```
 $ curl https://ipinfo.io/ip
+```
+
+Nextcloud
+----------
+#### Reset file locks
+```
+sudo -u www-data php occ maintenance:mode --on
+sudo -u postgres psql
+\c nextcloud
+DELETE FROM oc_file_locks WHERE 1 = 1;
+sudo -u www-data php occ maintenance:mode --off
 ```
