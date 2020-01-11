@@ -239,11 +239,15 @@ $ curl https://ipinfo.io/ip
 
 Nextcloud
 ----------
-#### Reset file locks
+#### Reset file indexing
 ```
 sudo -u www-data php occ maintenance:mode --on
+sudo -u www-data php occ files:scan --all
+sudo -u www-data php occ maintenance:mode --off
+```
+**Might need to reset file locks**
+```
 sudo -u postgres psql
 \c nextcloud
 DELETE FROM oc_file_locks WHERE 1 = 1;
-sudo -u www-data php occ maintenance:mode --off
 ```
