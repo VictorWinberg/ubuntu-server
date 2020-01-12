@@ -12,6 +12,7 @@ Ubuntu Server
 5. [Update Certificates](#update-certificates)
 6. [External IP](#external-ip)
 7. [Nextcloud](#nextcloud)
+8. [Home Assistant](#home-assistant)
 
 Setup wireless network
 ----------------------
@@ -251,3 +252,8 @@ sudo -u postgres psql
 \c nextcloud
 DELETE FROM oc_file_locks WHERE 1 = 1;
 ```
+
+Home Assistant
+----------
+**Change user**
+`sudo -u homeassistant -H -s`
