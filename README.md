@@ -13,6 +13,7 @@ Ubuntu Server
 6. [External IP](#external-ip)
 7. [Nextcloud](#nextcloud)
 8. [Home Assistant](#home-assistant)
+9. [Disk usage](#disk-usage)
 
 Setup wireless network
 ----------------------
@@ -257,3 +258,8 @@ Home Assistant
 ----------
 **Change user**
 `sudo -u homeassistant -H -s`
+
+Disk usage
+---------
+**Check disk usage**
+`sudo du -sch .[!.]* *`
