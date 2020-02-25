@@ -1,75 +1,19 @@
 Ubuntu Server
 ============
 
-1. [Setup wireless network](#setup-wireless-network)
-2. [SSH to server](#ssh-to-server)
-3. [Setup a new project](#setup-a-new-project)
+1. [SSH to server](#ssh-to-server)
+2. [Setup a new project](#setup-a-new-project)
     1. [Nginx setup](#nginx-setup)
     2. [DNS setup](#dns-setup)
     3. [Git server setup](#git-server-setup)
     4. [Git client setup](#git-client-setup)
-4. [Run on Startup](#run-on-startup)
-5. [Update Certificates](#update-certificates)
+3. [Run on Startup](#run-on-startup)
+4. [Update Certificates](#update-certificates)
+5. [Setup wireless network](#setup-wireless-network)
 6. [External IP](#external-ip)
 7. [Nextcloud](#nextcloud)
 8. [Home Assistant](#home-assistant)
 9. [Disk usage](#disk-usage)
-
-Setup wireless network
-----------------------
-### Preparation
-Wireless networking configuration, usually named `wlan0` or `eth0`
-```
-$ iwconfig
-wlan0  IEEE 802.11...
-$ ip link show wlan0             # check if wireless interface is up
-$ ip link set wlan0 up           # bring wireless interface up
-$ iwlist wlan0 scan | grep ESSID # scan wireless access points
-```
-
-### Generate psk key
-`wpa_passphrase [ssid] [passphrase]` eg.
-
-```
-$ wpa_passphrase "My WiFi" "password"
-network={
-    ssid="My WiFi"
-    #psk="password"
-    psk=59e0...
-}
-```
-
-### Configure the wireless network interfaces
-```
-$ cat >> /etc/network/interfaces
-# The wireless network interface
-auto wlan0
-iface wlan0 inet static # can be dhcp with router setup
-  address 192.168.0.80 # which ip the server should be at
-  netmask 255.255.255.0
-  gateway 192.168.0.1
-  broadcast 192.168.0.255 # needed?
-  network 192.168.0.0 # needed?  
-  dns-nameservers 8.8.8.8 8.8.4.4 # needed?
-
-  wpa-essid "My WiFi"
-  wpa-psk 59e0... # from wpa_passphrase
-```
-
-### *Alternative*
-
-Instead of `wpa_essid` and `wpa-psk` in `/etc/network/interfaces` use 
-```
-  wpa-driver wext
-  wpa-conf /etc/wpa_supplicant.conf
-```
-where /etc/wpa_supplicant.conf examples could be found [here](http://www.lsi.upc.edu/lclsi/Manuales/wireless/files/wpa_supplicant.conf)
-
-Could be tested as root with 
-```
-$ killall -q wpa_supplicant
-$ wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant.conf -d
-```
 
 SSH to server
 -------------
@@ -231,6 +175,62 @@ $ sudo certbot --authenticator webroot --installer nginx
 Input webroot: /usr/share/nginx/html
 $ sudo vim /etc/nginx/sites-available/default
 $ sudo /etc/init.d/nginx reload (start/restart)
+```
+
+Setup wireless network
+----------------------
+### Preparation
+Wireless networking configuration, usually named `wlan0` or `eth0`
+```
+$ iwconfig
+wlan0  IEEE 802.11...
+$ ip link show wlan0             # check if wireless interface is up
+$ ip link set wlan0 up           # bring wireless interface up
+$ iwlist wlan0 scan | grep ESSID # scan wireless access points
+```
+
+### Generate psk key
+`wpa_passphrase [ssid] [passphrase]` eg.
+
+```
+$ wpa_passphrase "My WiFi" "password"
+network={
+    ssid="My WiFi"
+    #psk="password"
+    psk=59e0...
+}
+```
+
+### Configure the wireless network interfaces
+```
+$ cat >> /etc/network/interfaces
+# The wireless network interface
+auto wlan0
+iface wlan0 inet static # can be dhcp with router setup
+  address 192.168.0.80 # which ip the server should be at
+  netmask 255.255.255.0
+  gateway 192.168.0.1
+  broadcast 192.168.0.255 # needed?
+  network 192.168.0.0 # needed?  
+  dns-nameservers 8.8.8.8 8.8.4.4 # needed?
+
+  wpa-essid "My WiFi"
+  wpa-psk 59e0... # from wpa_passphrase
+```
+
+### *Alternative*
+
+Instead of `wpa_essid` and `wpa-psk` in `/etc/network/interfaces` use 
+```
+  wpa-driver wext
+  wpa-conf /etc/wpa_supplicant.conf
+```
+where /etc/wpa_supplicant.conf examples could be found [here](http://www.lsi.upc.edu/lclsi/Manuales/wireless/files/wpa_supplicant.conf)
+
+Could be tested as root with 
+```
+$ killall -q wpa_supplicant
+$ wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant.conf -d
 ```
 
 External IP
