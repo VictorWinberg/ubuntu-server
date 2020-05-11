@@ -241,6 +241,10 @@ $ curl https://ipinfo.io/ip
 
 Nextcloud
 ----------
+**PHP Info** - `/info.php`
+
+**Folder location** - `/usr/share/nginx/html/nextcloud`
+
 #### Reset file indexing
 ```
 sudo -u www-data php occ maintenance:mode --on
