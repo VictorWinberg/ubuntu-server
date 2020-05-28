@@ -263,6 +263,13 @@ Home Assistant
 **Change user**
 `sudo -u homeassistant -H -s`
 
+**Updating HA**
+```
+sudo -u homeassistant -H -s
+source /srv/homeassistant/bin/activate
+pip3 install --upgrade homeassistant
+```
+
 Disk usage
 ---------
 **Check disk usage**
