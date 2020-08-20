@@ -143,12 +143,18 @@ $ atom {MAIN}.js
 ```
 ```js
 // {MAIN}.js
-const express = require('express')
-const app = express()
+const express = require('express');
+const path = require("path");
+const app = express();
 
-app.get('/', (req, res) => res.send('Hello World!'))
+const PORT = <<INSERT_PORT_HERE>>;
 
-app.listen({PORT}, () => console.log('Example app listening on port {PORT}!'))
+// Serve static files
+app.use(express.static(path.resolve(__dirname, "dist")));
+
+app.get('/api', (req, res) => res.send('API Running!'))
+
+app.listen(PORT, () => console.log(`App running on port ${PORT}!`))
 ```
 ```sh
 $ git add .
