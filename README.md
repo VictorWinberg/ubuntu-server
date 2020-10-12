@@ -138,11 +138,10 @@ $ cd {PROJECT}
 $ curl -o .gitignore https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore
 $ npm init
 $ npm install express --save
-# MAIN from npm init or package.json (default: index.js)
-$ atom {MAIN}.js
+$ code server/index.js
 ```
 ```js
-// {MAIN}.js
+// server/index.js
 const express = require('express');
 const path = require("path");
 const app = express();
