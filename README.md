@@ -2,22 +2,46 @@ Ubuntu Server
 ============
 
 1. [SSH to server](#ssh-to-server)
-2. [Setup a new project](#setup-a-new-project)
+2. [Postgres](#postgres)
+3. [Setup a new project](#setup-a-new-project)
     1. [Nginx setup](#nginx-setup)
     2. [DNS setup](#dns-setup)
     3. [Git server setup](#git-server-setup)
     4. [Git client setup](#git-client-setup)
-3. [Run on Startup](#run-on-startup)
-4. [Update Certificates](#update-certificates)
-5. [Setup wireless network](#setup-wireless-network)
-6. [External IP](#external-ip)
-7. [Nextcloud](#nextcloud)
-8. [Home Assistant](#home-assistant)
-9. [Disk usage](#disk-usage)
+4. [Run on Startup](#run-on-startup)
+5. [Update Certificates](#update-certificates)
+6. [Setup wireless network](#setup-wireless-network)
+7. [External IP](#external-ip)
+8. [Nextcloud](#nextcloud)
+9. [Home Assistant](#home-assistant)
+10. [Disk usage](#disk-usage)
 
 SSH to server
 -------------
 `$ ssh user@domain`
+
+Postgres
+--------
+Create database:
+
+```
+$ createdb DATABASE
+```
+
+Reset database:
+
+```
+$ curl https://www.DOMAIN.com/DATABASE.sql | sudo psql -U postgres DATABASE
+$ pg_dump --format=c -h 192.168.0.80 -U vicnie DATABASE | pg_restore --clean --no-owner -h localhost -d DATABASE
+```
+
+PSQL:
+```
+$ sudo psql -U postgres
+\l     <- list databases
+\c     <- connect to database
+\dt    <- list tables
+```
 
 Setup a new project
 -------------------
