@@ -292,11 +292,12 @@ Home Assistant
 **Change user**
 `sudo -u homeassistant -H -s`
 
-**Updating HA**
+**Updating HA to LSB**
 ```
 sudo -u homeassistant -H -s
 source /srv/homeassistant/bin/activate
-pip3 install --upgrade homeassistant
+pip3 install homeassistant==0.XX.X
+# pip3 install --upgrade homeassistant
 ```
 
 Disk usage
