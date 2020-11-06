@@ -102,6 +102,7 @@ ssh-rsa ABC123 user@domain.com
 ```bash
 #!/bin/bash 
 set -eu # exit script on errors
+. $HOME/.nvm/nvm.sh
 
 WORK_TREE="/home/git/www/{PROJECT}"
 GIT_DIR="/home/git/repos/{PROJECT}.git"
