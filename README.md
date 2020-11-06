@@ -104,8 +104,9 @@ ssh-rsa ABC123 user@domain.com
 set -eu # exit script on errors
 . $HOME/.nvm/nvm.sh
 
-WORK_TREE="/home/git/www/{PROJECT}"
-GIT_DIR="/home/git/repos/{PROJECT}.git"
+PROJECT="INSERT_PROJECT_NAME"
+WORK_TREE="/home/git/www/${PROJECT}"
+GIT_DIR="/home/git/repos/${PROJECT}.git"
 BRANCH="master"
 
 while read oldrev newrev ref
@@ -132,7 +133,7 @@ do
 #    forever columns reset > /dev/null
     
     echo "> pm2 start server"
-    pm2 start server --name {PROJECT}
+    pm2 start server --name "${PROJECT}"
 
     echo "Deployment ${BRANCH} branch complete."
 
