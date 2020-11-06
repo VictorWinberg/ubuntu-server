@@ -107,6 +107,7 @@ set -eu # exit script on errors
 PROJECT="INSERT_PROJECT_NAME"
 WORK_TREE="/home/git/www/${PROJECT}"
 GIT_DIR="/home/git/repos/${PROJECT}.git"
+MAIN="server"
 BRANCH="master"
 
 while read oldrev newrev ref
@@ -133,7 +134,7 @@ do
 #    forever columns reset > /dev/null
     
     echo "> pm2 start server"
-    pm2 start server --name "${PROJECT}"
+    pm2 restart "${PROJECT}" || pm2 start "${MAIN}" --name "${PROJECT}"
 
     echo "Deployment ${BRANCH} branch complete."
 
