@@ -126,10 +126,14 @@ do
     echo "> npm run build..."
     npm run build
 
-    echo "> forever restart server..."
-    forever columns set uid script forever pid uptime > /dev/null
-    forever restart server || (forever start server && forever list)
-    forever columns reset > /dev/null
+#    echo "> forever restart server..."
+#    forever columns set uid script forever pid uptime > /dev/null
+#    forever restart server || (forever start server && forever list)
+#    forever columns reset > /dev/null
+    
+    echo "> pm2 start server"
+    pm2 start server --name {PROJECT}
+
     echo "Deployment ${BRANCH} branch complete."
 
   else
