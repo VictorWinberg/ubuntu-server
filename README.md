@@ -100,7 +100,7 @@ ssh-rsa ABC123 user@domain.com
 `$ cd repos/{PROJECT}.git && cat > hooks/post-receive`
 
 ```bash
-#!/bin/bash 
+#!/bin/bash
 set -eu # exit script on errors
 . $HOME/.nvm/nvm.sh
 
@@ -127,7 +127,7 @@ do
 
     echo "> npm run build..."
     npm run build
-    
+
     echo "> pm2 start server"
     pm2 restart "${PROJECT}" || pm2 start "${MAIN}" --name "${PROJECT}"
 
