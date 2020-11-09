@@ -95,7 +95,7 @@ ssh-rsa ABC123 user@domain.com
 `[ENTER] + Ctrl+D`
 
 #### Add post-receive hook
-*Requires: npm install forever --global && apt-get install jq*
+*Requires: pm2*
 
 `$ cd repos/{PROJECT}.git && cat > hooks/post-receive`
 
