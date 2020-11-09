@@ -47,7 +47,7 @@ Setup a new project
 -------------------
 
 ### Nginx setup
-`$ sudo vim /etc/nginx/sites-available/default`
+`$ sudo nano /etc/nginx/sites-available/default`
 
 ```nginx
 # ...
@@ -97,7 +97,7 @@ ssh-rsa ABC123 user@domain.com
 #### Add post-receive hook
 *Requires: pm2*
 
-`$ cd repos/{PROJECT}.git && cat > hooks/post-receive`
+`$ cd repos/{PROJECT}.git && nano hooks/post-receive`
 
 ```bash
 #!/bin/bash
@@ -207,7 +207,7 @@ Update Certificates
 ```
 $ sudo certbot --authenticator webroot --installer nginx
 Input webroot: /usr/share/nginx/html
-$ sudo vim /etc/nginx/sites-available/default
+$ sudo nano /etc/nginx/sites-available/default
 $ sudo /etc/init.d/nginx reload (start/restart)
 ```
 
