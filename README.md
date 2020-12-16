@@ -1,3 +1,5 @@
+> ## Server Setup moved to [VictorWinberg/raspberry-pi-setup](https://github.com/VictorWinberg/raspberry-pi-setup)
+
 Ubuntu Server
 ============
 
